@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Textarea from "./Textarea";
 import { useState } from "react";
+import Stats from "./Stats";
 
 const StyledMain = styled.main({
   width: "1050px",
@@ -12,7 +13,7 @@ const StyledMain = styled.main({
   display: "flex",
   overflow: "hidden",
   position: "relative",
-  "@media (max-width:800px)": {
+  "@media (max-width:1150)": {
     width: "85vw",
     flexDirection: "column",
   },
@@ -23,6 +24,7 @@ export default function Container() {
   return (
     <StyledMain>
       <Textarea text={text} setText={setText} />
+      <Stats />
     </StyledMain>
   );
 }

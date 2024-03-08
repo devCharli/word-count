@@ -16,7 +16,7 @@ const H1 = styled.h1({
   color: "#ffffffeb",
   marginTop: "75px",
   textAlign: "center",
-  "@media (max-width:800px)": {
+  "@media (max-width:px)": {
     fontSize: "7vw",
   },
 });
