@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Textarea from "./Textarea";
+import { useState } from "react";
 
 const StyledMain = styled.main({
   width: "1050px",
@@ -18,9 +19,10 @@ const StyledMain = styled.main({
 });
 
 export default function Container() {
+  const [text, setText] = useState("");
   return (
     <StyledMain>
-      <Textarea />
+      <Textarea text={text} setText={setText} />
     </StyledMain>
   );
 }

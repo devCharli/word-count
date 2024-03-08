@@ -17,10 +17,24 @@ const StyledTextArea = styled.textarea({
   width: "100%",
 });
 
-export default function Textarea() {
+type TextAreaProp = {
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export default function Textarea({ text, setText }: TextAreaProp) {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = e.target.value;
+    setText(newText);
+  };
   return (
     <StyledDiv>
-      <StyledTextArea placeholder="Enter your text" spellCheck="false" />
+      <StyledTextArea
+        value={text}
+        onChange={handleChange}
+        placeholder="Enter your text"
+        spellCheck="false"
+      />
     </StyledDiv>
   );
 }
