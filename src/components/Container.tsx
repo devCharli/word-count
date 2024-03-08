@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Textarea from "./Textarea";
 
 const StyledMain = styled.main({
   width: "1050px",
@@ -17,5 +18,9 @@ const StyledMain = styled.main({
 });
 
 export default function Container() {
-  return <StyledMain>Container</StyledMain>;
+  return (
+    <StyledMain>
+      <Textarea />
+    </StyledMain>
+  );
 }
