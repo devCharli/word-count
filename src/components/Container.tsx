@@ -21,10 +21,23 @@ const StyledMain = styled.main({
 
 export default function Container() {
   const [text, setText] = useState("");
+
+  function countWords(text: string) {
+    const words = text.match(/[\uAC00-\uD7A3a-zA-Z]+/g);
+    return words ? words.length : 0;
+  }
+
+  const stats = {
+    textCountWithSpace: text.length,
+    textCountWithoutSpace: text.replace(/\s+/g, "").length,
+    wordCount: countWords(text),
+    sentenceCount: text.split(/[.?!]+/).filter(Boolean).length,
+  };
+
   return (
     <StyledMain>
       <Textarea text={text} setText={setText} />
-      <Stats />
+      <Stats {...stats} />
     </StyledMain>
   );
 }

@@ -7,17 +7,6 @@ const StyledStats = styled.section({
   flexWrap: "wrap",
 });
 
-export default function Stats() {
-  return (
-    <StyledStats>
-      <Stat />
-      <Stat />
-      <Stat />
-      <Stat />
-    </StyledStats>
-  );
-}
-
 const StyledStat = styled.section({
   flex: "1 150px",
   display: "flex",
@@ -53,11 +42,39 @@ const H2 = styled.h2({
   color: "#747a7c",
 });
 
-function Stat() {
+type StatsProp = {
+  textCountWithSpace: number;
+  textCountWithoutSpace: number;
+  wordCount: number;
+  sentenceCount: number;
+};
+
+export default function Stats({
+  textCountWithSpace,
+  textCountWithoutSpace,
+  wordCount,
+  sentenceCount,
+}: StatsProp) {
+  return (
+    <StyledStats>
+      <Stat count={textCountWithSpace} label="공백제외" />
+      <Stat count={textCountWithoutSpace} label="공백포함" />
+      <Stat count={wordCount} label="단어 수" />
+      <Stat count={sentenceCount} label="문장 수" />
+    </StyledStats>
+  );
+}
+
+type StatProp = {
+  count: number;
+  label: string;
+};
+
+function Stat({ count, label }: StatProp) {
   return (
     <StyledStat>
-      <Span>0</Span>
-      <H2>words</H2>
+      <Span>{count}</Span>
+      <H2>{label}</H2>
     </StyledStat>
   );
 }
