@@ -6,7 +6,7 @@ const StyledFooter = styled.footer({
   display: "flex",
   justifyContent: "space-between",
   opacity: "0.4",
-  "@media (max-width:1150)": {
+  "@media (max-width:1150px)": {
     width: "initial",
     flexDirection: "column",
     alignItems: "center",

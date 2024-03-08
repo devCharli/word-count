@@ -16,7 +16,7 @@ const H1 = styled.h1({
   color: "#ffffffeb",
   marginTop: "75px",
   textAlign: "center",
-  "@media (max-width:px)": {
+  "@media (max-width:1150px)": {
     fontSize: "7vw",
   },
 });
@@ -49,5 +49,5 @@ const HeaderBg = styled.div({
 });
 
 function HeaderBgImage() {
-  return <HeaderBg>image</HeaderBg>;
+  return <HeaderBg />;
 }
