@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Textarea from "./Textarea";
 import { useState } from "react";
 import Stats from "./Stats";
+import ButtonContainer from "./ButtonContainer";
+import Button from "./Button";
+import { ClipboardCopyIcon } from "@radix-ui/react-icons";
 
 const StyledMain = styled.main({
   width: "1050px",
@@ -22,10 +25,14 @@ const StyledMain = styled.main({
 export default function Container() {
   const [text, setText] = useState("");
 
-  function countWords(text: string) {
+  const countWords = (text: string) => {
     const words = text.match(/[\uAC00-\uD7A3a-zA-Z]+/g);
-    return words ? words.length : 0;
-  }
+    return words ? words.length : 0;ㅁ
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(text);
+  };
 
   const stats = {
     textCountWithSpace: text.length,
@@ -35,9 +42,18 @@ export default function Container() {
   };
 
   return (
-    <StyledMain>
-      <Textarea text={text} setText={setText} />
-      <Stats {...stats} />
-    </StyledMain>
+    <>
+      <StyledMain>
+        <Textarea text={text} setText={setText} />
+        <Stats {...stats} />
+      </StyledMain>
+      <ButtonContainer>
+        <Button
+          label="복사하기"
+          handleClick={copyToClipboard}
+          icon={<ClipboardCopyIcon />}
+        />
+      </ButtonContainer>
+    </>
   );
 }
