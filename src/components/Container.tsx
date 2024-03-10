@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Textarea from "./Textarea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stats from "./Stats";
 import ButtonContainer from "./ButtonContainer";
 import Button from "./Button";
-import { ClipboardCopyIcon } from "@radix-ui/react-icons";
+import { ClipboardCopyIcon, ResetIcon } from "@radix-ui/react-icons";
 
 const StyledMain = styled.main({
   width: "1050px",
@@ -24,14 +24,34 @@ const StyledMain = styled.main({
 
 export default function Container() {
   const [text, setText] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
+  const [isReset, setIsReset] = useState(false);
 
   const countWords = (text: string) => {
     const words = text.match(/[\uAC00-\uD7A3a-zA-Z]+/g);
-    return words ? words.length : 0;ㅁ
+    return words ? words.length : 0;
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+  }, [isCopied]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsReset(false);
+    }, 1000);
+  }, [isReset]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(text);
+    setIsCopied(true);
+  };
+
+  const resetText = () => {
+    setText("");
+    setIsReset(true);
   };
 
   const stats = {
@@ -50,8 +70,15 @@ export default function Container() {
       <ButtonContainer>
         <Button
           label="복사하기"
+          isClicked={isCopied}
           handleClick={copyToClipboard}
           icon={<ClipboardCopyIcon />}
+        />
+        <Button
+          label="초기화"
+          isClicked={isReset}
+          handleClick={resetText}
+          icon={<ResetIcon />}
         />
       </ButtonContainer>
     </>
