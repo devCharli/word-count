@@ -16,7 +16,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => ({
   letterSpacing: "2px",
   fontWeight: "500",
   cursor: "pointer",
-  border: `2px solid ${props.isClicked ? "#4CAF50" : ""}`,
+  border: `2px solid ${props.isClicked ? "#4CAF50" : "none"}`,
 }));
 
 type ButtonProp = {

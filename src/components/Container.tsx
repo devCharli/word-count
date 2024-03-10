@@ -18,6 +18,8 @@ const StyledMain = styled.main({
   position: "relative",
   "@media (max-width:1150px)": {
     width: "85vw",
+    margin: "0 auto",
+    marginTop: "40px",
     flexDirection: "column",
   },
 });
