@@ -32,7 +32,7 @@ export default function Textarea({ text, setText }: TextAreaProp) {
       <StyledTextArea
         value={text}
         onChange={handleChange}
-        placeholder="Enter your text"
+        placeholder="내용을 입력해주세요."
         spellCheck="false"
       />
     </StyledDiv>

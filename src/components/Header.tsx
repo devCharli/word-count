@@ -28,7 +28,7 @@ const Span = styled.span({
 function Title() {
   return (
     <H1>
-      Word <Span>Analytics</Span>
+      글자 수 <Span>세기</Span>
     </H1>
   );
 }
@@ -45,7 +45,7 @@ const HeaderBg = styled.div({
       rgba(101, 0, 163, 0.9),
       rgba(24, 120, 175, 0.9)
     ),
-    url("https://images.unsplash.com/photo-1546453667-8a8d2d07bc20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=100")`,
+    url("https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%B0%9D%EC%9D%80-%ED%8C%8C%EB%9E%80%EC%83%89%EC%97%90%EC%84%9C-%EC%A7%84%ED%95%9C-%ED%8C%8C%EB%9E%80%EC%83%89-%EA%B7%B8%EB%9D%BC%EB%8D%B0%EC%9D%B4%EC%85%98-pJadQetzTkI")`,
 });
 
 function HeaderBgImage() {

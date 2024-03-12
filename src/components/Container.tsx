@@ -37,13 +37,13 @@ export default function Container() {
   useEffect(() => {
     setTimeout(() => {
       setIsCopied(false);
-    }, 1000);
+    }, 500);
   }, [isCopied]);
 
   useEffect(() => {
     setTimeout(() => {
       setIsReset(false);
-    }, 1000);
+    }, 500);
   }, [isReset]);
 
   const copyToClipboard = () => {
