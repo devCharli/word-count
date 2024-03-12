@@ -47,13 +47,19 @@ export default function Container() {
   }, [isReset]);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(text);
-    setIsCopied(true);
+    if (text) {
+      navigator.clipboard.writeText(text);
+      setIsCopied(true);
+    }
+    return;
   };
 
   const resetText = () => {
-    setText("");
-    setIsReset(true);
+    if (text) {
+      setText("");
+      setIsReset(true);
+    }
+    return;
   };
 
   const stats = {
