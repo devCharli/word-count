@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import Textarea from "./Textarea";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Stats from "./Stats";
 import ButtonContainer from "./ButtonContainer";
 import Button from "./Button";
 import { ClipboardCopyIcon, ResetIcon } from "@radix-ui/react-icons";
+import Toast from "./Toast";
 
 const StyledMain = styled.main({
   width: "1050px",
@@ -26,30 +27,22 @@ const StyledMain = styled.main({
 
 export default function Container() {
   const [text, setText] = useState("");
-  const [isCopied, setIsCopied] = useState(false);
-  const [isReset, setIsReset] = useState(false);
+
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState<"copied" | "reset">(
+    "copied"
+  );
 
   const countWords = (text: string) => {
     const words = text.match(/[\uAC00-\uD7A3a-zA-Z]+/g);
     return words ? words.length : 0;
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 500);
-  }, [isCopied]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsReset(false);
-    }, 500);
-  }, [isReset]);
-
   const copyToClipboard = () => {
     if (text) {
       navigator.clipboard.writeText(text);
-      setIsCopied(true);
+      setToastMessage("copied");
+      setShowToast(true);
     }
     return;
   };
@@ -57,7 +50,8 @@ export default function Container() {
   const resetText = () => {
     if (text) {
       setText("");
-      setIsReset(true);
+      setToastMessage("reset");
+      setShowToast(true);
     }
     return;
   };
@@ -71,6 +65,12 @@ export default function Container() {
 
   return (
     <>
+      <Toast
+        isOpen={showToast}
+        onCloseToast={setShowToast}
+        message={toastMessage}
+      />
+
       <StyledMain>
         <Textarea text={text} setText={setText} />
         <Stats {...stats} />
@@ -78,16 +78,10 @@ export default function Container() {
       <ButtonContainer>
         <Button
           label="복사하기"
-          isClicked={isCopied}
           handleClick={copyToClipboard}
           icon={<ClipboardCopyIcon />}
         />
-        <Button
-          label="초기화"
-          isClicked={isReset}
-          handleClick={resetText}
-          icon={<ResetIcon />}
-        />
+        <Button label="초기화" handleClick={resetText} icon={<ResetIcon />} />
       </ButtonContainer>
     </>
   );

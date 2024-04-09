@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-type StyledButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  isClicked: boolean;
-};
-
-const StyledButton = styled.button<StyledButtonProps>((props) => ({
+const StyledButton = styled.button({
   display: "flex",
   alignItems: "center",
   margin: "10px",
@@ -16,12 +12,10 @@ const StyledButton = styled.button<StyledButtonProps>((props) => ({
   letterSpacing: "2px",
   fontWeight: "500",
   cursor: "pointer",
-  border: `2px solid ${props.isClicked ? "#4CAF50" : "none"}`,
-}));
+});
 
 type ButtonProp = {
   label: string;
-  isClicked: boolean;
   handleClick: () => void;
   icon: React.ReactNode;
 };
@@ -30,14 +24,9 @@ const IconSpan = styled.span({
   marginRight: "5px",
 });
 
-export default function Button({
-  label,
-  isClicked,
-  handleClick,
-  icon,
-}: ButtonProp) {
+export default function Button({ label, handleClick, icon }: ButtonProp) {
   return (
-    <StyledButton onClick={handleClick} isClicked={isClicked}>
+    <StyledButton onClick={handleClick}>
       <IconSpan>{icon}</IconSpan>
       <span>{label}</span>
     </StyledButton>
