@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Header() {
   return (
@@ -10,7 +11,7 @@ export default function Header() {
 }
 
 const H1 = styled.h1({
-  fontSize: "65px",
+  fontSize: "18px",
   letterSpacing: "5px",
   textTransform: "uppercase",
   color: "#ffffffeb",
@@ -21,14 +22,25 @@ const H1 = styled.h1({
   },
 });
 
-const Span = styled.span({
-  fontWeight: 300,
-});
-
 function Title() {
   return (
     <H1>
-      글자 수 <Span>세기</Span>
+      <TypeAnimation
+        sequence={[
+          "글자 수 세기 공백 없이",
+          1000,
+          "글자 수 세기 공백 포함",
+          1000,
+          "단어와 문장 수 세기",
+          1000,
+          "글자 수 간단하게 세기",
+          1000, 
+        ]}
+        wrapper="span"
+        speed={10}
+        style={{ fontSize: "2em", display: "inline-block" }}
+        repeat={0}
+      />
     </H1>
   );
 }
